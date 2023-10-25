@@ -21,6 +21,16 @@ public class PlayerMovement : MonoBehaviour
         if (player2)
         {
             moveY = Input.GetAxisRaw("Vertical2");
+            moveX = Input.GetAxisRaw("Horizontal2");
+            if (moveX != 0)
+            {
+                playerRb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            }
+            if (moveX == 0)
+            {
+                playerRb.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
+            }
+
         }
         if (!player2)
         {
@@ -33,7 +43,6 @@ public class PlayerMovement : MonoBehaviour
             if (moveX==0)
             {
                 playerRb.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
-
             }
         }
     }
